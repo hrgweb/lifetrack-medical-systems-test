@@ -11,6 +11,7 @@
 
 <body>
   <div class=" container">
+    <!-- INPUTS -->
     <form>
       <!-- CURRENT NUMBER STUDY PER DAY -->
       <div class="inputs">
@@ -30,9 +31,14 @@
         <input type="number" id="months_to_forecast" name="months_to_forecast" required>
       </div>
 
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" id="submit">Submit</button>
     </form>
+
+    <!-- RESULT -->
+    <div id="result"></div>
   </div>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>
