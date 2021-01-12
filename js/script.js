@@ -1,14 +1,15 @@
 function data() {
   var inputs = {
     studyPerDay: document.getElementById("study_per_day").value,
-    studyPerMonth: document.getElementById("study_growth_per_month").value,
+    studyGrowthPerMonth: document.getElementById("study_growth_per_month")
+      .value,
     monthsToForecast: document.getElementById("months_to_forecast").value,
   };
 
   var queryStr = "?";
 
   queryStr += "studyPerDay=" + inputs.studyPerDay + "&";
-  queryStr += "studyPerMonth=" + inputs.studyPerMonth + "&";
+  queryStr += "studyGrowthPerMonth=" + inputs.studyGrowthPerMonth + "&";
   queryStr += "monthsToForecast=" + inputs.monthsToForecast;
 
   return queryStr;
