@@ -1,0 +1,41 @@
+body {
+  background: #e3e3e3;
+  font-style: tahoma;
+  padding: 16px;
+}
+
+form,
+form .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+form .inputs {
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+input {
+  font-size: 18px;
+  padding: 6px;
+}
+
+button {
+  padding: 16px;
+}
+
+button[type="submit"] {
+  background: green;
+  border: 1px solid gray;
+  font-size: 16px;
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background: rgb(5, 170, 5);
+  cursor: pointer;
+}
