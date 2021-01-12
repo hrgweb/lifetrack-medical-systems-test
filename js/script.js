@@ -19,21 +19,17 @@ function src(file) {
 }
 
 // SUBMIT THE FORM
-function onSubmit() {
-  document.getElementById("submit").addEventListener("click", function (e) {
-    e.preventDefault();
+document.getElementById("submit").addEventListener("click", function (e) {
+  e.preventDefault();
 
-    var xmlhttp = new XMLHttpRequest();
+  var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("result").innerHTML = this.responseText;
-      }
-    };
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
 
-    xmlhttp.open("GET", src("php/submit.php"), true);
-    xmlhttp.send();
-  });
-}
-
-onSubmit();
+  xmlhttp.open("GET", src("php/submit.php"), true);
+  xmlhttp.send();
+});
