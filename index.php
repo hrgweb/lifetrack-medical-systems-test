@@ -21,7 +21,7 @@
 
       <!-- NUMBER OF STUDY GROWTH PER MONTH -->
       <div class="inputs">
-        <label for="study_growth_per_month">Study growth per moth</label>
+        <label for="study_growth_per_month">Study growth per month (%)</label>
         <input type="number" id="study_growth_per_month" name="study_growth_per_month" required>
       </div>
 
