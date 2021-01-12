@@ -1,14 +1,15 @@
 <?php
 
 include_once 'Date.php';
+include_once 'Study.php';
 
 class Table
 {
-  protected $dt;
+  protected $date;
 
   public function __construct()
   {
-    $this->dt = new Date();
+    $this->date = new Date();
   }
 
   protected function header()
@@ -24,20 +25,15 @@ class Table
 
   protected function row(array $inputs)
   {
-    $data = [
-      'one',
-      'two',
-      'three'
-    ];
-
     $row = "";
+    $growthPerMonth = Study::computeGrowthPerMonth($inputs);
 
     for ($i = 0; $i < (int)$inputs['monthsToForecast']; $i++) {
       $row .= "
         <tr>
-          <td>{$this->dt->generateDate($i)}</td>
-          <td>{$inputs['studyPerDay']}</td>
-          <td>{$data[2]}</td>
+          <td>{$this->date->generateDate($i)}</td>
+          <td>{$inputs['studyPerDay']} ({$growthPerMonth})</td>
+          <td>{$growthPerMonth}</td>
         </tr>
       ";
     }
