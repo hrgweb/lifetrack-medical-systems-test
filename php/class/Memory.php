@@ -22,7 +22,7 @@ class Memory implements HardwareInterface
    * 1 GB RAM PER HOUR = 0.00553 USD 
    * 
    */
-  public static function usePerMonth(array $inputs)
+  public function usePerMonth(array $inputs)
   {
     $no_of_studies = Study::computeGrowthPerMonth($inputs); // NUMBER OF STUDIES + STUDY GROWTH PER MONTH(%)
     $amount_of_ram = $no_of_studies / self::PER_STUDIES; // PER QTY = 500 MB RAM
@@ -30,10 +30,10 @@ class Memory implements HardwareInterface
     return self::COST_PER_THOUSAND_STUDIES * $amount_of_ram; // RAM(MB) USED
   }
 
-  public static function costPerMonth(array $inputs)
+  public function costPerMonth(array $inputs)
   {
     // RAM USED / COST GB RAM PER HOUR
-    $qty = (float) self::usePerMonth($inputs) / (float) self::PER_GIGABYTE_RAM;
+    $qty = (float) $this->usePerMonth($inputs) / (float) self::PER_GIGABYTE_RAM;
 
     return ($qty * self::COST_GIGABYTE_RAM_PER_HOUR) * self::HOURS_PER_MONTH;
   }

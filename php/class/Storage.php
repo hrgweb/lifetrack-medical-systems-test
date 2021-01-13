@@ -20,16 +20,16 @@ class Storage implements HardwareInterface
    * 1 GB STORAGE PER MONTH = 0.10 USD
    *
    */
-  public static function usePerMonth(array $inputs)
+  public function usePerMonth(array $inputs)
   {
     $no_of_studies = Study::computeGrowthPerMonth($inputs); // NUMBER OF STUDIES + STUDY GROWTH PER MONTH(%)
 
     return $no_of_studies * self::USE_PER_STUDY;
   }
 
-  public static function costPerMonth(array $inputs)
+  public function costPerMonth(array $inputs)
   {
-    $qty_per_gb = self::usePerMonth($inputs) / self::PER_GIGABYTE_RAM;
+    $qty_per_gb = $this->usePerMonth($inputs) / self::PER_GIGABYTE_RAM;
 
     return $qty_per_gb * self::COST_PER_GIGABYTE_PER_MONTH;
   }

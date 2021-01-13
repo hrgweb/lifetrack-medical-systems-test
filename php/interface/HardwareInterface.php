@@ -2,6 +2,6 @@
 
 interface HardwareInterface
 {
-  public static function usePerMonth(array $inputs);
-  public static function costPerMonth(array $inputs);
+  public function usePerMonth(array $inputs);
+  public function costPerMonth(array $inputs);
 }
