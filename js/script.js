@@ -1,3 +1,5 @@
+"use strict";
+
 window.STUDY_PER_DAY_ELEMENT = document.getElementById("study_per_day");
 window.STUDY_GROWTH_PER_MONTH_ELEMENT = document.getElementById(
   "study_growth_per_month"
@@ -33,10 +35,19 @@ function validation() {
     return false;
   }
 
-  // CHECK IF STUDY GROWTH PER MONTH IS EMPTY
+  // MONTHS TO FORECAST IS EMPTY
   if (!input.monthsToForecast) {
     alert("Months to forecast is empty");
     MONTHS_TO_FORECAST_ELEMENT.focus();
+
+    return false;
+  }
+
+  // MONTHS TO FORECAST SHOULD BETWEEN 1 TO 12, 12MONTHS/YEAR, IF NOT FAIL THE VALIDATION
+  if (parseInt(input.monthsToForecast, 10) > 12) {
+    alert("Months to forecast should between 1 to 12.");
+    MONTHS_TO_FORECAST_ELEMENT.focus();
+    MONTHS_TO_FORECAST_ELEMENT.value = "";
 
     return false;
   }
