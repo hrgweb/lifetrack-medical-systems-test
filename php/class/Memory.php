@@ -12,14 +12,13 @@ class Memory
   protected const HOURS_PER_MONTH = 730;
 
   /**
-   * ====== NOTE ======
-   * 
    * == RAM ==
+   * 
    * 1,000 STUDIES = 500 MB RAM
    * 1 GB RAM PER HOUR = 0.00553 USD 
    * 
    */
-  public static function computeRamUsed(array $inputs)
+  public static function usePerMonth(array $inputs)
   {
     $no_of_studies = Study::computeGrowthPerMonth($inputs); // NUMBER OF STUDIES + STUDY GROWTH PER MONTH(%)
     $amount_of_ram = $no_of_studies / self::PER_STUDIES; // PER QTY = 500 MB RAM
@@ -30,7 +29,7 @@ class Memory
   public static function costPerMonth(array $inputs)
   {
     // RAM USED / COST GB RAM PER HOUR
-    $qty = (float) self::computeRamUsed($inputs) / (float) self::PER_GIGABYTE_RAM;
+    $qty = (float) self::usePerMonth($inputs) / (float) self::PER_GIGABYTE_RAM;
 
     return ($qty * self::COST_GIGABYTE_RAM_PER_HOUR) * self::HOURS_PER_MONTH;
   }
