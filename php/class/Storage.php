@@ -1,8 +1,12 @@
 <?php
 
+// CLASS
 include_once 'Study.php';
 
-class Storage
+// INTERFACE
+include_once 'interface/HardwareInterface.php';
+
+class Storage implements HardwareInterface
 {
   protected const PER_STUDY = 1;
   protected const USE_PER_STUDY = 10;  // 10 MB STORAGE
