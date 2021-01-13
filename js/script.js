@@ -34,6 +34,10 @@ function validation() {
   return true;
 }
 
+function validated() {
+  return validation() ? true : false;
+}
+
 function queryString() {
   var queryStr = "?";
 
@@ -52,8 +56,10 @@ function src(file) {
 document.getElementById("submit").addEventListener("click", function (e) {
   e.preventDefault();
 
-  console.log(validation());
-  return;
+  // CHECK IF VALIDATION FAILS THEN EXIT
+  if (!validated()) {
+    return;
+  }
 
   var xmlhttp = new XMLHttpRequest();
 
