@@ -8,10 +8,14 @@ include_once 'Storage.php';
 class Table
 {
   protected $date;
+  protected $memory;
+  protected $storage;
 
   public function __construct()
   {
     $this->date = new Date();
+    $this->memory = new Memory();
+    $this->storage = new Storage();
   }
 
   protected function header()
@@ -30,7 +34,7 @@ class Table
     $row = "";
     $studyPerDay = number_format($inputs['studyPerDay']);
     $growthPerMonth = number_format(Study::computeGrowthPerMonth($inputs));
-    $costForecasted = number_format((float) Memory::costPerMonth($inputs) + (float) Storage::costPerMonth($inputs), 2);
+    $costForecasted = number_format((float) $this->memory->costPerMonth($inputs) + (float) $this->storage->costPerMonth($inputs), 2);
 
     for ($i = 0; $i < (int)$inputs['monthsToForecast']; $i++) {
       $row .= "
