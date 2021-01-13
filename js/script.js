@@ -1,9 +1,16 @@
+window.STUDY_PER_DAY_ELEMENT = document.getElementById("study_per_day");
+window.STUDY_GROWTH_PER_MONTH_ELEMENT = document.getElementById(
+  "study_growth_per_month"
+);
+window.MONTHS_TO_FORECAST_ELEMENT = document.getElementById(
+  "months_to_forecast"
+);
+
 function data() {
   return {
-    studyPerDay: document.getElementById("study_per_day").value,
-    studyGrowthPerMonth: document.getElementById("study_growth_per_month")
-      .value,
-    monthsToForecast: document.getElementById("months_to_forecast").value,
+    studyPerDay: STUDY_PER_DAY_ELEMENT.value,
+    studyGrowthPerMonth: STUDY_GROWTH_PER_MONTH_ELEMENT.value,
+    monthsToForecast: MONTHS_TO_FORECAST_ELEMENT.value,
   };
 }
 
@@ -13,6 +20,7 @@ function validation() {
   // CHECK IF STUDY PER DAY IS EMPTY
   if (!input.studyPerDay) {
     alert("Study per day is empty");
+    STUDY_PER_DAY_ELEMENT.focus();
 
     return false;
   }
@@ -20,6 +28,7 @@ function validation() {
   // CHECK IF STUDY GROWTH PER MONTH IS EMPTY
   if (!input.studyGrowthPerMonth) {
     alert("Study growth per month (%) is empty");
+    STUDY_GROWTH_PER_MONTH_ELEMENT.focus();
 
     return false;
   }
@@ -27,6 +36,7 @@ function validation() {
   // CHECK IF STUDY GROWTH PER MONTH IS EMPTY
   if (!input.monthsToForecast) {
     alert("Months to forecast is empty");
+    MONTHS_TO_FORECAST_ELEMENT.focus();
 
     return false;
   }
