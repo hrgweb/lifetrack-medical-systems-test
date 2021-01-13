@@ -1,8 +1,12 @@
 <?php
 
+// CLASS
 include_once 'Study.php';
 
-class Memory
+// INTERFACE
+include_once 'interface/HardwareInterface.php';
+
+class Memory implements HardwareInterface
 {
   protected const PER_STUDIES = 1000;
   protected const COST_PER_THOUSAND_STUDIES = 500; // 500MB RAM
