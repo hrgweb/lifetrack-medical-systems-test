@@ -79,9 +79,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
   e.preventDefault();
 
   // CHECK IF VALIDATION FAILS THEN EXIT
-  if (!validated()) {
-    return;
-  }
+  if (!validated()) return;
 
   var xmlhttp = new XMLHttpRequest();
 
