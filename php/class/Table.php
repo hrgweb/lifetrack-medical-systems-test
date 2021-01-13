@@ -2,6 +2,8 @@
 
 include_once 'Date.php';
 include_once 'Study.php';
+include_once 'Memory.php';
+include_once 'Storage.php';
 
 class Table
 {
@@ -26,14 +28,16 @@ class Table
   protected function row(array $inputs)
   {
     $row = "";
-    $growthPerMonth = Study::computeGrowthPerMonth($inputs);
+    $studyPerDay = number_format($inputs['studyPerDay']);
+    $growthPerMonth = number_format(Study::computeGrowthPerMonth($inputs));
+    $costForecasted = number_format((float) Memory::costPerMonth($inputs) + (float) Storage::costPerMonth($inputs), 2);
 
     for ($i = 0; $i < (int)$inputs['monthsToForecast']; $i++) {
       $row .= "
         <tr>
           <td>{$this->date->generateDate($i)}</td>
-          <td>{$inputs['studyPerDay']} ({$growthPerMonth})</td>
-          <td>{$growthPerMonth}</td>
+          <td>{$studyPerDay} ({$growthPerMonth})</td>
+          <td>$ {$costForecasted}</td>
         </tr>
       ";
     }
