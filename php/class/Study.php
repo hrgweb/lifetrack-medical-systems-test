@@ -1,16 +1,7 @@
 <?php
 
-include_once 'Memory.php';
-
 class Study
 {
-  protected $memory;
-
-  public function __construct()
-  {
-    $this->memory = new Memory();
-  }
-
   public static function computeGrowthPerMonth(array $inputs)
   {
     $study_per_day = (float) $inputs['studyPerDay'];
