@@ -39,6 +39,7 @@ function validated() {
 }
 
 function queryString() {
+  var inputs = data();
   var queryStr = "?";
 
   queryStr += "studyPerDay=" + inputs.studyPerDay + "&";
@@ -49,7 +50,7 @@ function queryString() {
 }
 
 function src(file) {
-  return file + data();
+  return file + queryString();
 }
 
 // SUBMIT THE FORM
