@@ -1,30 +1,29 @@
 <?php
 
-include_once 'Memory.php';
-include_once 'Storage.php';
 class Study
 {
-  protected $memory;
-  protected $storage;
+  public $inputs;
 
-  public function __construct()
+  public function __construct(array $inputs)
   {
-    $this->memory = new Memory();
-    $this->storage = new Storage();
+    $this->inputs = $inputs;
   }
 
-  public static function computeGrowthPerMonth(array $inputs)
+  public function computeGrowthPerMonth()
   {
-    $study_per_day = (float) $inputs['studyPerDay'];
-    $inputted_growth_per_month = (float) $inputs['studyGrowthPerMonth'];
+    $study_per_day = (float) $this->inputs['studyPerDay'];
+    $inputted_growth_per_month = (float) $this->inputs['studyGrowthPerMonth'];
 
     $percentage_growth = ($study_per_day * $inputted_growth_per_month) / 100;
 
     return $study_per_day + $percentage_growth;
   }
 
-  public function costForecasted(array $inputs)
+  public function displayComputedGrowthPerMonth()
   {
-    return number_format((float) $this->memory->costPerMonth($inputs) + (float) $this->storage->costPerMonth($inputs), 2);
+    $studyPerDay = number_format($this->inputs['studyPerDay']);
+    $growthPerMonth = number_format($this->computeGrowthPerMonth());
+
+    return $studyPerDay . ' (' . $growthPerMonth . ')';
   }
 }

@@ -1,21 +1,20 @@
 <?php
 
 include_once 'Date.php';
-include_once 'Study.php';
 include_once 'Memory.php';
-include_once 'Storage.php';
+include_once 'Study.php';
 
 class Table
 {
   protected $date;
   protected $memory;
-  protected $storage;
+  protected $study;
 
-  public function __construct()
+  public function __construct(Study $study)
   {
     $this->date = new Date();
-    $this->memory = new Memory();
-    $this->storage = new Storage();
+    $this->study = $study;
+    $this->memory = new Memory(new Study($this->study->inputs));
   }
 
   protected function header()
@@ -29,19 +28,17 @@ class Table
     ";
   }
 
-  protected function row(array $inputs)
+  protected function row()
   {
     $row = "";
-    $studyPerDay = number_format($inputs['studyPerDay']);
-    $growthPerMonth = number_format(Study::computeGrowthPerMonth($inputs));
-    $costForecasted = number_format((float) $this->memory->costPerMonth($inputs) + (float) $this->storage->costPerMonth($inputs), 2);
+    $inputs = $this->study->inputs;
 
     for ($i = 0; $i < (int)$inputs['monthsToForecast']; $i++) {
       $row .= "
         <tr>
           <td>{$this->date->generateDate($i)}</td>
-          <td>{$studyPerDay} ({$growthPerMonth})</td>
-          <td>$ {$costForecasted}</td>
+          <td>{$this->study->displayComputedGrowthPerMonth()}</td>
+          <td>$ {$this->memory->costForecasted()}</td>
         </tr>
       ";
     }
@@ -49,8 +46,10 @@ class Table
     return $row;
   }
 
-  public function display(array $inputs)
+  public function display()
   {
+    $inputs = $this->study->inputs;
+
     $table = '<br>';
     $table .= "<table style='width:100%'>";
     $table .= $this->header();
