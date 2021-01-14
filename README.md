@@ -7,6 +7,6 @@
 **To test it**:
 
 - install xampp
-- clone it from github(put it on that directory something like e.g c:\xampp\htdocs\web)
-- in the url type localhost/web/{the-project-folder}
+- clone it from github(put it on that directory something like e.g _c:\xampp\htdocs\web_)
+- in the url type _localhost/web/{the-project-folder}_
 - your good to go
